@@ -12,8 +12,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+#running synopsys action
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Synopsys Action
         uses: synopsys-sig/synopsys-action@v1.9.0
         with:
@@ -23,9 +26,6 @@ jobs:
           polaris_application_name: "Azure_WEB_APP"
           polaris_project_name: "Azure_WEB_APP"
           polaris_assessment_types: "SAST,SCA"
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
