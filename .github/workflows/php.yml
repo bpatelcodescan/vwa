@@ -22,7 +22,7 @@ jobs:
 
       - name: Configure Polaris
         run: |
-          echo "polaris_serverUrl: https://poc.polaris.synopsys.com/"
+          echo "polaris_server_url: https://poc.polaris.synopsys.com/"
           echo "polaris_accessToken: mj85pn5nc571l1r3h51k3kiokaknlps9tj04e8dh1f7nqg4j1e0h9trhmqu0f8n1frh2th8kh1ies"
           echo "polaris_application_name: Azure_WEB_APP"
           echo "polaris_project_name: Azure_WEB_APP"
