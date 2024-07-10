@@ -1,0 +1,38 @@
+name: Build Docker Image and Scan Code
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests targeting the main branch
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Snyk Code Scan
+        run: snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Build Docker Image
+        run: |
+          docker build . --file Dockerfile --tag vulnerable-web-app:$(date +%s)
+
+      - name: List Docker Images
+        run: |
+          docker images  # List the Docker images to verify that the image was built
