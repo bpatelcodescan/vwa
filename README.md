@@ -9,7 +9,7 @@ information about this subject or to be working. In fact, the website is quite s
 
 Vulnerable-Web-Application categorically includes Command Execution, File Inclusion, File Upload, SQL and XSS. For database-requiring
 categories, it creates a database under localhost with one button during setup. In case of corrupted or changed databases, you can
-create a database again.
+create a database again
 
 ## Installation Guide
 
