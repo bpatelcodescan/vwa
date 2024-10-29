@@ -10,7 +10,7 @@
     </div>
     <div align="center" style="background-color:#c9c9c9;padding:20px;">
       <h1 align="center">I think there is a vuln here!</h1>
-    <form align="center" action="CommandExec-2.php" method="$_GET">
+    <form align="center" action="CommandExec-2.php" method="GET">
       <label align="center">Name:</label>
       <input align="center" type="text" name="typeBox" value=""><br>
       <input align="center" type="submit" value="Submit">
@@ -19,7 +19,7 @@
   <div style="background-color:#ecf2d0;padding:20px;border-radius:0px 0px 20px 20px" align="center">
     <?php
     if(isset($_GET["typeBox"])){
-      $target =$_GET["typeBox"];
+      $target = escapeshellcmd($_GET["typeBox"]);
       $substitutions = array('&&' => '',';'  => '','/' => '','\\' => '' );
       $target = str_replace(array_keys($substitutions),$substitutions,$target);
       echo shell_exec($target);

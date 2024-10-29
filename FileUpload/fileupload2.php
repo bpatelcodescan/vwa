@@ -33,8 +33,13 @@ if(isset($_POST["submit"])) {
     }
     
     if($uploadOk == 1){
-        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-        echo "File uploaded /uploads/".$_FILES["file"]["name"];
+        $check = getimagesize($_FILES["file"]["tmp_name"]);
+        if($check !== false) {
+            move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+            echo "File uploaded /uploads/".$_FILES["file"]["name"];
+        } else {
+            echo "File is not an image.";
+        }
     }
 }
 ?>

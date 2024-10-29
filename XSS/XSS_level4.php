@@ -21,6 +21,7 @@ if (isset($_GET["username"])) {
 
  	$user = str_replace($values, " ",$_GET["username"]);
 	$user = preg_replace("/<(.*)[S,s](.*)[C,c](.*)[R,r](.*)[I,i](.*)[P,p](.*)[T,t]>/i", "", $_GET["username"]);
+    $user = htmlspecialchars($user, ENT_QUOTES, 'UTF-8');
 	echo "$user";
 }
 
